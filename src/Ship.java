@@ -24,7 +24,6 @@ public class Ship {
 
     public boolean isSunk(){
         for (int i : statusArray) {
-
             if(i == 1){
                 return false;
             }
