@@ -20,6 +20,7 @@ public class GameSetup {
     public void getInput() {
         Scanner sc = new Scanner(System.in);
         userInput = sc.nextLine();
+        sc.close();
     }
 
     public String[] extractIndividualShip(String input) {
