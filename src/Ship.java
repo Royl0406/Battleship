@@ -15,7 +15,7 @@ public class Ship {
         this.length = length;
         this.type = type;
         this.orient = orient;
-        statusArray = new int[5];
+        statusArray = new int[length];
         for (int i = 0; i<length; i++){
             statusArray[i] = 1;
         }
