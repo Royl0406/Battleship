@@ -1,10 +1,13 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameSetup {
     
     private char[][] locations;
     private String userInput;
-    
+    private ArrayList shipList = new ArrayList<Ship>();
+
+
     public GameSetup() {
 
         locations = new char[10][10];
@@ -110,7 +113,7 @@ public class GameSetup {
         }
 
         else{
-            return "Sorry. There was a problem accessing your orientation. Please ensure that you have specified 'h' for horizontal orientation, or 'v' for vertical orientation.";
+            return "Sorry. There was a problem accessing your " + fullType + " orientation. Please ensure that you have specified 'h' for horizontal orientation, or 'v' for vertical orientation.";
         }
 
     
@@ -124,6 +127,9 @@ public class GameSetup {
                         if (locations[r][c] == '0'){
                             locations[r][c] = typeChar;
                             errorMessage = "comp_code_VALID";
+                            Ship s = new Ship(row, col, size, type, orient);
+                            shipList.add(s);
+
                         }
                         else{
                             errorMessage = "Sorry. Your " + fullType + " is overlapping with another ship. Please try again.";
@@ -145,4 +151,10 @@ public class GameSetup {
 
     }
     
+    public int getLocation(int hLoc, int vLoc){
+
+        return -1;
+
+    }
 }
+
