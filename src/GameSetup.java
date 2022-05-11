@@ -6,8 +6,8 @@ public class GameSetup {
     private char[][] locations;
     private String userInput;
     private ArrayList shipList = new ArrayList<Ship>();
-    Player p1;
-    Player p2;
+    Player p1 = new Player();
+    Player p2 = new Player();
 
 
     public GameSetup() {
@@ -57,10 +57,10 @@ public class GameSetup {
 
         valid = false;
         while(!valid){
-            String shipLocs = p1.getInput();
+            String shipLocs = getInput();
             String [] locArr = extractIndividualShip(shipLocs);
-            for(int i = 0; i < locArr.length; i++){
-                String setCode = setLocation(i);
+            for(String shipInfo: locArr){
+                String setCode = setLocation(shipInfo);
                 if (!setCode.equals("comp_code_VALID")){
                     System.out.println(setCode);
                     break;
@@ -72,10 +72,10 @@ public class GameSetup {
 
         valid = false;
         while(!valid){
-            String shipLocs = p2.getInput();
+            String shipLocs = getInput();
             String [] locArr = extractIndividualShip(shipLocs);
-            for(int i = 0; i < locArr.length; i++){
-                String setCode = setLocation(i);
+            for(String shipInfo:locArr){
+                String setCode = setLocation(shipInfo);
                 if (!setCode.equals("comp_code_VALID")){
                     System.out.println(setCode);
                     break;
@@ -90,7 +90,8 @@ public class GameSetup {
     public String getInput() {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
-        sc.close();
+        System.out.println(input);
+       // sc.close();
         return input;
     }
 

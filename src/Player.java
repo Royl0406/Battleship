@@ -4,6 +4,10 @@ public class Player {
     private String username;
     private int team;
     
+    public Player() {
+        
+    }
+    
     public Player(String username, int team){
 
         this.username = username;
