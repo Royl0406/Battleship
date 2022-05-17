@@ -3,25 +3,35 @@ public class Player {
     
     private String username;
     private int team;
+    private Board statusBoard;
+    private int shotNum;
+    private int hitNum;
+
+
     
     public Player() {
         
     }
     
-    public Player(String username, int team){
+    public Player(int team){
 
-        this.username = username;
+        
         this.team = team;
+        shotNum = 0;
+        hitNum = 0;
+
+        
  
     }
 
-    public String isValid (String input){
+    public String setUsername (String input){
 
         if (input.length() > 25){
 
             return("Sorry. Your username is too long. Usernames must be less than 25 characters.");
         }
 
+        username = input;
         return ("comp_code_VALID");
 
     }
@@ -36,6 +46,26 @@ public class Player {
         }
         return "Rebels";
     }
-    
 
-}
+    public void addHit(){
+        hitNum++;
+    }
+
+    public void addShot(){
+        shotNum++;
+    }
+
+    public int getHits(){
+        return hitNum;
+    }
+
+    public int getShots(){
+        return shotNum;
+    }
+
+    public Board getBoard(){
+        return statusBoard;
+    }
+}   
+
+

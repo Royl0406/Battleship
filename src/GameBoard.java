@@ -19,6 +19,7 @@ public class GameBoard {
         board = new JPanel();
         board.setLayout(new GridLayout(11, 11));
 
+        ImageIcon zero = new ImageIcon("Star Wars images/0.png");
         ImageIcon one = new ImageIcon("Star Wars images/1.png");
         ImageIcon two = new ImageIcon("Star Wars images/2.png");
         ImageIcon three = new ImageIcon("Star Wars images/3.png");
@@ -28,7 +29,6 @@ public class GameBoard {
         ImageIcon sev = new ImageIcon("Star Wars images/7.png");
         ImageIcon eight = new ImageIcon("Star Wars images/8.png");
         ImageIcon nine = new ImageIcon("Star Wars images/9.png");
-        ImageIcon ten = new ImageIcon("Star Wars images/10.png");
 
         ImageIcon A = new ImageIcon("Star Wars images/A.png");
         ImageIcon B = new ImageIcon("Star Wars images/B.png");
@@ -44,16 +44,16 @@ public class GameBoard {
         //adding labels for each column (1-10)
         for(int i = 0; i < 11; i++) {                    
             switch(i) {
-                case 1: board.add(new JButton(one)); break;
-                case 2: board.add(new JButton(two)); break;
-                case 3: board.add(new JButton(three)); break;
-                case 4: board.add(new JButton(four)); break;
-                case 5: board.add(new JButton(five)); break;
-                case 6: board.add(new JButton(six)); break;
-                case 7: board.add(new JButton(sev)); break;
-                case 8: board.add(new JButton(eight)); break;
-                case 9:board.add(new JButton(nine)); break;
-                case 10: board.add(new JButton(ten)); break;
+                case 1: board.add(new JButton(zero)); break;
+                case 2: board.add(new JButton(one)); break;
+                case 3: board.add(new JButton(two)); break;
+                case 4: board.add(new JButton(three)); break;
+                case 5: board.add(new JButton(four)); break;
+                case 6: board.add(new JButton(five)); break;
+                case 7: board.add(new JButton(six)); break;
+                case 8: board.add(new JButton(sev)); break;
+                case 9:board.add(new JButton(eight)); break;
+                case 10: board.add(new JButton(nine)); break;
 
             }
         }
