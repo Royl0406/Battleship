@@ -8,6 +8,12 @@ public class Board{
         return boardArray;
     }
 
+    public boolean isHit(int r, int c){
+
+        return (boardArray[r][c] == '1');
+
+    }
+
     
 
 }
