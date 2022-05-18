@@ -1,12 +1,9 @@
-import javax.imageio.plugins.jpeg.JPEGHuffmanTable;
 import javax.swing.*;
 import java.awt.*;
-import java.lang.reflect.GenericDeclaration;
-import java.util.IdentityHashMap;
 
 public class GameBoard {
-    final int width = 1000;
-    final int height = 1000;
+    final int width = 1100;
+    final int height = 1100;
     JFrame frame;
     JPanel board;
 
