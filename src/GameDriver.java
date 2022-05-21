@@ -2,30 +2,20 @@
 
 public class GameDriver {
     
-    private String[] shipLocation;
     private Player p1;
     private Player p2;
     
-    public GameDriver(String[] shipLocation) {
-        this.shipLocation = shipLocation;
-        GameSetup currentGame = new GameSetup();
+    public GameDriver() {
+        p1 = new Player(0);
+        p2 = new Player(1);
         
         }
     
 
-    public boolean sinkConfirmation(Ship current) {
+    public void play(){
 
-        if (current.isSunk()){
-            System.out.println("You have sunk your opponent's " + current.getType());
-            return true;
-        }
-        return false;
-    }
-    public boolean hitMiss(int hLoc, int vLoc){
-
-
-        
-        return true;
+        p1.setShipLocations();
+        p2.setShipLocations();
         
     }
 

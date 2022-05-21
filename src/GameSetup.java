@@ -1,100 +1,22 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+//This class helps each player place their ships onto their board. It stores the locations into a char array,
+//which is then accessed in the Player class and stored in each player's Board object
+
+
+
 
 public class GameSetup {
     
     private char[][] locations;
-    private String userInput;
-    private ArrayList shipList = new ArrayList<Ship>();
-    Player p1 = new Player();
-    Player p2 = new Player();
 
 
-    public GameSetup() {
-
-        locations = new char[10][10];
-        for (int r = 0; r<10; r++){
-            for (int c = 0; c<10; c++){
-                locations[r][c] = '0';
-                
-            }
-        }
-
-        System.out.println("Player 1: Please enter your username.");
-        
-        boolean valid = false;
-        String p1User = null;
-        while (!valid){
-            p1User = getInput();
-            String code = p1.isValid(p1User);
-            if (code.equals("comp_code_VALID")){
-                valid = true;
-            }
-            else{
-                System.out.println(code);
-            }
-        }
-        p1 = new Player(p1User, 0);
-        System.out.println("Thank you " + p1User + ". Your team is the Empire.");
-        System.out.println("Player 2: Please enter your username.");
-
-        valid = false;
-        String p2User = null;
-        while (!valid){
-            p2User = getInput();
-            String code = p2.isValid(p2User);
-            if (code.equals("comp_code_VALID")){
-                valid = true;
-            }
-            else{
-                System.out.println(code);
-            }
-        }
-        p2 = new Player(p2User, 1);
-        System.out.println("Thank you " + p2User + ". Your team is the Rebellion.");
-
-        System.out.println(p1.getName() + " please enter your properly formatted ship locations.");
-
-        valid = false;
-        while(!valid){
-            String shipLocs = getInput();
-            String [] locArr = extractIndividualShip(shipLocs);
-            for(String shipInfo: locArr){
-                String setCode = setLocation(shipInfo);
-                if (!setCode.equals("comp_code_VALID")){
-                    System.out.println(setCode);
-                    break;
-                }
-            }
-        }
-
-        System.out.println(p2.getName() + " please enter your properly formatted ship locations.");
-
-        valid = false;
-        while(!valid){
-            String shipLocs = getInput();
-            String [] locArr = extractIndividualShip(shipLocs);
-            for(String shipInfo:locArr){
-                String setCode = setLocation(shipInfo);
-                if (!setCode.equals("comp_code_VALID")){
-                    System.out.println(setCode);
-                    break;
-                }
-            }
-        }
-
-            
+    public GameSetup(){
         
     }
+
     
-    public String getInput() {
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-        System.out.println(input);
-       // sc.close();
-        return input;
-    }
-
+    //The below method parses a properly formatted String into multiple small Strings that contain information about 
+    //a specific ship's location. These Strings are stored in an array, which is returned.
+    
     public String[] extractIndividualShip(String input) {
         String[] ships = new String[5];
         for(int i = 0; i < 5; i++) {
@@ -108,6 +30,10 @@ public class GameSetup {
         return ships;
     }
 
+
+
+    //The below method takes in a String that represents a specific ship's location, and sets that ship's location on the
+    //char array. If the String isn't properly formatted, it wipes the char array and returns an error message.
 
     public String setLocation(String input){
         
@@ -196,8 +122,8 @@ public class GameSetup {
                         if (locations[r][c] == '0'){
                             locations[r][c] = typeChar;
                             errorMessage = "comp_code_VALID";
-                            Ship s = new Ship(row, col, size, type, orient);
-                            shipList.add(s);
+                            //Ship s = new Ship(row, col, size, type, orient);
+                            //shipList.add(s);
 
                         }
                         else{
@@ -209,9 +135,7 @@ public class GameSetup {
                                 }
                             }
 
-                            for(int i = shipList.size()-1; i>=0; i--){
-                                shipList.remove(i);
-                            }
+                           
                         }
 
                     } catch (Exception ArrayIndexOutOfBoundsException){
@@ -230,9 +154,11 @@ public class GameSetup {
 
     }
     
-    public int getLocation(int hLoc, int vLoc){
+    //The below method returns the char array containing the ship locations
 
-        return -1;
+    public char[][] getLocations(){
+
+        return locations;
 
     }
 }
