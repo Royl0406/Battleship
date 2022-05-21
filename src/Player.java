@@ -25,22 +25,26 @@ public class Player {
  
     }
 
-    public String setUsername (String input){
+    public boolean setUsername (){
 
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        
         if (input.length() > 25){
 
-            return("Sorry. Your username is too long. Usernames must be less than 25 characters.");
+            System.out.println("Sorry. Your username is too long. Usernames must be less than 25 characters.");
+            return false;
         }
 
         username = input;
-        return ("comp_code_VALID");
+        return true;
 
     }
 
 
     public void setShipLocations(){
         GameSetup setup = new GameSetup();
-        System.out.println("Please enter your properly formatted ship locations.");
+        System.out.println(username + ", please enter your properly formatted ship locations.");
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
 
