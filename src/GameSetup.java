@@ -13,11 +13,7 @@ public class GameSetup {
 
         locations = new char[10][10];
 
-        for(int r = 0; r<10; r++){
-            for(int c = 0; c<10; c++){
-                locations[r][c] = '0';
-            }
-        }
+        
         
     }
 
@@ -51,6 +47,8 @@ public class GameSetup {
         int col;
         int size;
         char typeChar;
+
+    
         
         
         String type = input.substring(0,1);
@@ -124,6 +122,8 @@ public class GameSetup {
         }
 
     
+//there are problems with rowStart and rowEnd, need to be fixed.
+
 
         for (int r = rowStart; r<rowEnd; r++){
             for (int c = colStart; c<colEnd; c++){
@@ -140,12 +140,6 @@ public class GameSetup {
                         }
                         else{
                             errorMessage = "Sorry. Your " + fullType + " is overlapping with another ship. Please try again.";
-                            for (int resetRow = 0; r<10; r++){
-                                for (int resetCol = 0; c<10; c++){
-                                    locations[resetRow][resetCol] = '0';
-                                    
-                                }
-                            }
 
                            
                         }
@@ -163,6 +157,16 @@ public class GameSetup {
             }
         
 
+            
+            if (!errorMessage.equals("comp_code_VALID")){
+                for(int r = 0; r<10; r++){
+                    for(int c = 0; c<10; c++){
+                        locations[r][c] = '0';
+                    }
+                }
+
+                System.out.println("test");
+            }
             
             return errorMessage;
 

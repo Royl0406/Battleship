@@ -38,13 +38,13 @@ public class GameDriver {
             Scanner sc = new Scanner(System.in);
             System.out.println(p1.getName()+", choose your target.");
             String input = sc.nextLine();
-            p1.getBoard().targetLocation(input);
-            gameOver = p1.getBoard().gameState();
+            p2.getBoard().targetLocation(input);
+            gameOver = p2.getBoard().gameState();
 
             System.out.println(p2.getName()+", choose your target.");
             input = sc.nextLine();
-            p2.getBoard().targetLocation(input);
-            gameOver = p2.getBoard().gameState();
+            p1.getBoard().targetLocation(input);
+            gameOver = p1.getBoard().gameState();
 
 
         }

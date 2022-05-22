@@ -73,6 +73,14 @@ public class Player {
 
         statusBoard.setBoard(setup.getLocations());
 
+        for(int r = 0; r <10; r++){
+            for(int c = 0; c<10; c++){
+
+                System.out.print(setup.getLocations()[r][c] + " ");
+            }
+            System.out.println();
+        }
+
         
     }
 
