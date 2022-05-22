@@ -56,7 +56,6 @@ public class Player {
         while(!formatted){
 
             for(int i = 0; i < shipStrings.length; i++) { 
-                System.out.println(shipStrings[i]); 
                 String code = setup.setLocation(shipStrings[i]);
                 if (!code.equals("comp_code_VALID")){
                     System.out.println(code);
