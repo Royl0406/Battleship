@@ -20,6 +20,7 @@ public class Player {
         this.team = team;
         shotNum = 0;
         hitNum = 0;
+        statusBoard = new Board();
 
         
  
@@ -54,10 +55,14 @@ public class Player {
 
         while(!formatted){
 
-            for(int i = 0; i < shipStrings.length; i++) {  
-                if (!setup.setLocation(shipStrings[i]).equals("comp_code_VALID")){
-                    System.out.println(setup.setLocation(shipStrings[i]));
+            for(int i = 0; i < shipStrings.length; i++) { 
+                System.out.println(shipStrings[i]); 
+                String code = setup.setLocation(shipStrings[i]);
+                if (!code.equals("comp_code_VALID")){
+                    System.out.println(code);
                     formatted = false;
+                    input = sc.nextLine();
+                    shipStrings = setup.extractIndividualShip(input);
                     break;
                  }
                  else{

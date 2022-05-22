@@ -10,6 +10,14 @@ public class GameSetup {
 
 
     public GameSetup(){
+
+        locations = new char[10][10];
+
+        for(int r = 0; r<10; r++){
+            for(int c = 0; c<10; c++){
+                locations[r][c] = '0';
+            }
+        }
         
     }
 
@@ -44,9 +52,13 @@ public class GameSetup {
         int size;
         char typeChar;
         
+        
         String type = input.substring(0,1);
+        
         String rowStr = input.substring(2,3);
+        
         String colStr = input.substring(3,4);
+        
         String orient = input.substring(4);
         String fullType;
 
@@ -140,6 +152,7 @@ public class GameSetup {
 
                     } catch (Exception ArrayIndexOutOfBoundsException){
 
+                    
                         errorMessage = "Sorry. Your " + fullType + " position is not valid. Remember, ships must be within the 10 by 10 game square. Please try again.";
 
                     }
@@ -150,7 +163,8 @@ public class GameSetup {
             }
         
 
-        return errorMessage;
+            
+            return errorMessage;
 
     }
     

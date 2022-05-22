@@ -14,10 +14,15 @@ public class GameDriver {
 
     public void play(){
 
+        System.out.println("Player 1: Please enter your username.");
+        
         boolean validName = false;
         while(!validName){
             validName = p1.setUsername();
         }
+        
+        System.out.println("Player 2: Please enter your username.");
+        
         validName = false;
         while(!validName){
             validName = p2.setUsername();

@@ -36,8 +36,8 @@ public class Board{
             case "F": r = 5; break;
             case "G": r = 6; break;
             case "H": r = 7; break;
-            case "I": r = 9; break;
-            default: r = 10;
+            case "I": r = 8; break;
+            default: r = 9;
             
 
         }
