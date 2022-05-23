@@ -15,7 +15,15 @@ public class GameSetup {
     public GameSetup(){
 
         locations = new char[10][10];
+
+
         shipList = new ArrayList<Ship>();
+
+        for (int r = 0; r<10; r++){
+            for(int c = 0; c<10; c++){
+                locations[r][c] = '0';
+            }
+        }
 
         
         
