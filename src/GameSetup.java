@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 //This class helps each player place their ships onto their board. It stores the locations into a char array,
 //which is then accessed in the Player class and stored in each player's Board object
 
@@ -7,11 +9,13 @@
 public class GameSetup {
     
     private char[][] locations;
+    private ArrayList<Ship> shipList;
 
 
     public GameSetup(){
 
         locations = new char[10][10];
+        shipList = new ArrayList<Ship>();
 
         
         
@@ -39,7 +43,7 @@ public class GameSetup {
     //The below method takes in a String that represents a specific ship's location, and sets that ship's location on the
     //char array. If the String isn't properly formatted, it wipes the char array and returns an error message.
 
-    public String setLocation(String input){
+    public String setLocation(String input, int team){
         
         String errorMessage = "";
 
@@ -47,6 +51,7 @@ public class GameSetup {
         int col;
         int size;
         char typeChar;
+        int typeInt;
 
     
         
@@ -82,11 +87,11 @@ public class GameSetup {
 
         switch (type){
             
-            case "A": size = 5; typeChar = 'a'; fullType = "Aircraft Carrier"; break;
-            case "B": size = 5; typeChar = 'b'; fullType = "Battleship"; break;
-            case "D": size = 3; typeChar = 'd'; fullType = "Destroyer"; break;
-            case "S": size = 3; typeChar = 's'; fullType = "Submarine"; break;
-            default: size = 2; typeChar = 'p'; fullType = "Patrol Boat";
+            case "A": size = 5; typeChar = 'a'; fullType = "Aircraft Carrier"; typeInt = 0; break;
+            case "B": size = 5; typeChar = 'b'; fullType = "Battleship"; typeInt = 1; break;
+            case "D": size = 3; typeChar = 'd'; fullType = "Destroyer"; typeInt = 2; break;
+            case "S": size = 3; typeChar = 's'; fullType = "Submarine"; typeInt = 3; break;
+            default: size = 2; typeChar = 'p'; fullType = "Patrol Boat"; typeInt = 4;
 
 
         }
@@ -104,6 +109,7 @@ public class GameSetup {
             colEnd = col + size;
             rowEnd ++;
             rowStart = row;
+            colStart = col;
             
 
         }
@@ -115,6 +121,9 @@ public class GameSetup {
             rowEnd = row + size;
             colEnd++;
             colStart = col;
+            rowStart = row;
+
+            
         }
 
         else{
@@ -134,8 +143,8 @@ public class GameSetup {
                         if (locations[r][c] == '0'){
                             locations[r][c] = typeChar;
                             errorMessage = "comp_code_VALID";
-                            //Ship s = new Ship(row, col, size, type, orient);
-                            //shipList.add(s);
+                            Ship s = new Ship(row, col, size, typeInt, orient, team);
+                            shipList.add(s);
 
                         }
                         else{
@@ -165,7 +174,7 @@ public class GameSetup {
                     }
                 }
 
-                System.out.println("test");
+                
             }
             
             return errorMessage;
@@ -178,6 +187,10 @@ public class GameSetup {
 
         return locations;
 
+    }
+
+    public ArrayList<Ship> getShipList(){
+        return shipList;
     }
 }
 

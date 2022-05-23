@@ -37,13 +37,31 @@ public class GameDriver {
 
             Scanner sc = new Scanner(System.in);
             System.out.println(p1.getName()+", choose your target.");
-            String input = sc.nextLine();
-            p2.getBoard().targetLocation(input);
+            String input;
+            
+            int valid = -1;
+
+            while(valid == -1){
+                input = sc.nextLine();
+                valid = p2.getBoard().targetLocation(input);
+            }
+            
+            p1.addHit(valid);
+            p1.addShot();
             gameOver = p2.getBoard().gameState();
 
             System.out.println(p2.getName()+", choose your target.");
-            input = sc.nextLine();
-            p1.getBoard().targetLocation(input);
+            
+            
+            valid = -1;
+
+            while(valid == -1){
+                input = sc.nextLine();
+                valid = p1.getBoard().targetLocation(input);
+            }
+            
+            p2.addHit(valid);
+            p2.addShot();
             gameOver = p1.getBoard().gameState();
 
 

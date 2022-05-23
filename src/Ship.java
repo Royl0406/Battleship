@@ -33,7 +33,8 @@ public class Ship {
 
             String pathName = "Star Wars images/";
 
-            pathName = pathName + team + type + i + orient;
+            pathName = pathName + team + type + i + orient + ".png";
+
 
             images[i] = new ImageIcon(pathName);
             

@@ -1,10 +1,13 @@
 public class Board{
     private char[][] boardArray;
+    private int team;
     public Board(char[][] input){
         boardArray = input;
     }
 
-    public Board(){
+    public Board(int team){
+
+        this.team = team;
 
     }
 
@@ -20,9 +23,19 @@ public class Board{
     public int targetLocation(String input){
         
         int r;
-        int c;
+        int c = 0;
 
-        c = Integer.parseInt(input.substring(1));
+        try {
+
+            c = Integer.parseInt(input.substring(1));
+            
+        } catch (Exception numberFormatException) {
+            System.out.println("Sorry. That's not a valid target. Please try again.");
+            return -1;
+        }
+        
+        
+        
 
         String rowStr = input.substring(0,1);
 
@@ -37,22 +50,41 @@ public class Board{
             case "G": r = 6; break;
             case "H": r = 7; break;
             case "I": r = 8; break;
-            default: r = 9;
+            case "J": r = 9; break;
+            default: System.out.println("Sorry. That's not a valid target. Please try again"); return -1;
             
 
         }
 
-
+    
+    
+        try {
 
         if (boardArray[r][c]!='1' && boardArray[r][c]!='0'){
             System.out.println("Hit!");
-            boardArray[r][c] = 1;
+            System.out.println(boardArray[r][c]);
+            boardArray[r][c] = '1';
             return 1;
+        }
+
+        else if(boardArray[r][c] == '1'){
+            System.out.println("Sorry. It looks like you've already hit that square. Please try again.");
+            return -1;
         }
 
         System.out.println("Miss!");
 
         return 0;
+        
+    } catch (Exception arrayIndexOutOfBoundsException) {
+
+        
+        System.out.println("Sorry. That's not a valid target. Please try again.");
+        return -1;
+        
+    }
+
+        
     }
 
 

@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 public class Player {
     
     
@@ -7,6 +8,7 @@ public class Player {
     private Board statusBoard;
     private int shotNum;
     private int hitNum;
+    private ArrayList<Ship> shipList;
 
 
     
@@ -20,7 +22,9 @@ public class Player {
         this.team = team;
         shotNum = 0;
         hitNum = 0;
-        statusBoard = new Board();
+        statusBoard = new Board(team);
+        shipList = new ArrayList<Ship>();
+        
 
         
  
@@ -33,7 +37,7 @@ public class Player {
         
         if (input.length() > 25){
 
-            System.out.println("Sorry. Your username is too long. Usernames must be less than 25 characters.");
+            System.out.println("Sorry. Your username is too long. Usernames must be 25 characters or less.");
             return false;
         }
 
@@ -41,8 +45,7 @@ public class Player {
         return true;
 
     }
-
-
+    
     public void setShipLocations(){
         GameSetup setup = new GameSetup();
         System.out.println(username + ", please enter your properly formatted ship locations.");
@@ -56,7 +59,7 @@ public class Player {
         while(!formatted){
 
             for(int i = 0; i < shipStrings.length; i++) { 
-                String code = setup.setLocation(shipStrings[i]);
+                String code = setup.setLocation(shipStrings[i], team);
                 if (!code.equals("comp_code_VALID")){
                     System.out.println(code);
                     formatted = false;
@@ -72,14 +75,8 @@ public class Player {
         }
 
         statusBoard.setBoard(setup.getLocations());
+        shipList = setup.getShipList();
 
-        for(int r = 0; r <10; r++){
-            for(int c = 0; c<10; c++){
-
-                System.out.print(setup.getLocations()[r][c] + " ");
-            }
-            System.out.println();
-        }
 
         
     }
@@ -95,8 +92,8 @@ public class Player {
         return "Rebels";
     }
 
-    public void addHit(){
-        hitNum++;
+    public void addHit(int input){
+        hitNum += input;
     }
 
     public void addShot(){
