@@ -4,10 +4,14 @@ public class GameDriver {
     
     private Player p1;
     private Player p2;
+    private GameBoard p1Board;
+    private GameBoard p2Board;
     
     public GameDriver() {
         p1 = new Player(0);
         p2 = new Player(1);
+        p1Board = new GameBoard();
+        p2Board = new GameBoard();
         
         }
     
@@ -20,6 +24,9 @@ public class GameDriver {
         while(!validName){
             validName = p1.setUsername();
         }
+
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
         
         System.out.println("Player 2: Please enter your username.");
         
@@ -28,8 +35,19 @@ public class GameDriver {
             validName = p2.setUsername();
         }
 
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+
         p1.setShipLocations();
+
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+
+
         p2.setShipLocations();
+
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
 
         boolean gameOver = false;
 
@@ -50,6 +68,9 @@ public class GameDriver {
             p1.addShot();
             gameOver = p2.getBoard().gameState();
 
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+
             System.out.println(p2.getName()+", choose your target.");
             
             
@@ -63,6 +84,9 @@ public class GameDriver {
             p2.addHit(valid);
             p2.addShot();
             gameOver = p1.getBoard().gameState();
+
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
 
 
         }
