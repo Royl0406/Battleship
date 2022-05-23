@@ -53,6 +53,8 @@ public class GameDriver {
 
         while(!gameOver){
 
+            p2Board.showBoard();
+            
             Scanner sc = new Scanner(System.in);
             System.out.println(p1.getName()+", choose your target.");
             String input;

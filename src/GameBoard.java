@@ -6,9 +6,20 @@ public class GameBoard {
     final int height = 1100;
     JFrame frame;
     JPanel board;
+    JButton[][] squares;
 
     public GameBoard() {
 
+        squares = new JButton[11][11];
+        for(int r = 0; r < 11; r++) {
+            for(int c = 0; c < 11; c++) {
+                squares[r][c] = new JButton();
+                squares[r][c].setBorder(BorderFactory.createLineBorder(Color.yellow));
+                squares[r][c].setBackground(Color.black);
+                squares[r][c].setOpaque(true);
+            }
+        }
+        
     }
 
     public void showBoard() {
@@ -125,15 +136,23 @@ public class GameBoard {
                     }
                     break;
                 }
-                JButton button = new JButton();
+                /*JButton button = new JButton();
                 button.setBorder(BorderFactory.createLineBorder(Color.yellow));
                 button.setBackground(Color.black);
-                button.setOpaque(true);
-                board.add(button);
+                button.setOpaque(true);*/
+                board.add(squares[i][j]);
             }
 
         }
         frame.add(board, BorderLayout.CENTER);
         frame.setVisible(true);
+    }
+
+    public void close() {
+        frame.setVisible(false);
+    }
+
+    public void updateSquare() {
+        
     }
 }
