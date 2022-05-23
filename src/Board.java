@@ -62,7 +62,6 @@ public class Board{
 
         if (boardArray[r][c]!='1' && boardArray[r][c]!='0'){
             System.out.println("Hit!");
-            System.out.println(boardArray[r][c]);
             boardArray[r][c] = '1';
             return 1;
         }
