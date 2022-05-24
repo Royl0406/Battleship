@@ -86,7 +86,7 @@ public class Board{
         
     }
 
-
+//remember to add 2 for missed shots
     public boolean gameState(){
 
         for(char[] arr : boardArray){
