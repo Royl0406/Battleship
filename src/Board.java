@@ -19,6 +19,10 @@ public class Board{
         boardArray = input;
     }
 
+    public char getType(int r, int c){
+        return boardArray[r][c];
+    }
+
 
     public int targetLocation(String input){
         
@@ -66,12 +70,13 @@ public class Board{
             return 1;
         }
 
-        else if(boardArray[r][c] == '1'){
+        else if(boardArray[r][c] == '1' || boardArray[r][c] == '2'){
             System.out.println("Sorry. It looks like you've already hit that square. Please try again.");
             return -1;
         }
 
         System.out.println("Miss!");
+        boardArray[r][c] = '2';
 
         return 0;
         
@@ -91,7 +96,7 @@ public class Board{
 
         for(char[] arr : boardArray){
             for(char loc : arr){
-                if(loc!= '0' && loc!= '1'){
+                if(loc!= '0' && loc!= '1' && loc!= '2'){
                     return false;
                 }
             }

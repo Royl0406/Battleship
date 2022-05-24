@@ -93,6 +93,31 @@ public class Player {
         
     }
 
+    public void updateShips(String input){
+        int r;
+        int c = 0;
+
+        c = Integer.parseInt(input.substring(1));
+
+        String rowStr = input.substring(0,1);
+
+        switch(rowStr){
+
+            case "A": r = 0; break;
+            case "B": r = 1; break;
+            case "C": r = 2; break;
+            case "D": r = 3; break;
+            case "E": r = 4; break;
+            case "F": r = 5; break;
+            case "G": r = 6; break;
+            case "H": r = 7; break;
+            case "I": r = 8; break;
+            case "J": r = 9; break;
+        }
+
+        
+    }
+
     public String getName(){
         return username;
     }

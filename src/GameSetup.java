@@ -79,6 +79,7 @@ public class GameSetup {
 
         for(String current:typeList){
             if (current.equals(type)){
+                typeList = new ArrayList<String>();
                 return "Sorry. You can't repeat ships. Please check your input and try again.";
             }
         }
