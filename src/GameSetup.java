@@ -10,11 +10,13 @@ public class GameSetup {
     
     private char[][] locations;
     private ArrayList<Ship> shipList;
+    private ArrayList<String> typeList;
 
 
     public GameSetup(){
 
         locations = new char[10][10];
+        typeList = new ArrayList<String>();
 
 
         shipList = new ArrayList<Ship>();
@@ -74,6 +76,12 @@ public class GameSetup {
         
         String orient = input.substring(4);
         String fullType;
+
+        for(String current:typeList){
+            if (current.equals(type)){
+                return "Sorry. You can't repeat ships. Please check your input and try again.";
+            }
+        }
 
         
 
@@ -141,7 +149,6 @@ public class GameSetup {
         }
 
     
-//there are problems with rowStart and rowEnd, need to be fixed.
 
 
         for (int r = rowStart; r<rowEnd; r++){
@@ -186,6 +193,8 @@ public class GameSetup {
 
                 
             }
+
+            typeList.add(type);
             
             return errorMessage;
 
