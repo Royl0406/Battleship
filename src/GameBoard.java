@@ -7,9 +7,13 @@ public class GameBoard {
     JFrame frame;
     JPanel board;
     JButton[][] squares;
+    char[][] playerBoard;
 
-    public GameBoard() {
-
+    
+    //uncomment after testing
+    public GameBoard(/*char[][] playerBoard*/) {
+        //this.playerBoard = playerBoard;
+        
         squares = new JButton[11][11];
         for(int r = 0; r < 11; r++) {
             for(int c = 0; c < 11; c++) {
@@ -136,11 +140,15 @@ public class GameBoard {
                     }
                     break;
                 }
-                /*JButton button = new JButton();
-                button.setBorder(BorderFactory.createLineBorder(Color.yellow));
-                button.setBackground(Color.black);
-                button.setOpaque(true);*/
-                board.add(squares[i][j]);
+                //identify what's in the square: TO BE COMPLETED
+                /*if(playerBoard[i-1][j] == 1) {
+                    
+                }
+                else {
+                    board.add(squares[i][j]);
+                }*/
+                
+                
             }
 
         }
@@ -152,7 +160,7 @@ public class GameBoard {
         frame.setVisible(false);
     }
 
-    public void updateSquare() {
-        
+    public void updateBoard(char[][] updatedBoard) {
+        playerBoard = updatedBoard;
     }
 }

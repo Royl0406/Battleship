@@ -4,7 +4,8 @@ public class Runner {
         GameBoard g1 = new GameBoard();
         //GameDriver driver = new GameDriver();
     
-        g1.showBoard();
+        //g1.showBoard();
+        StartMenu m1 = new StartMenu();
         //driver.play();
         //String[] shipLoc = r1.extractIndividualShip("A A1v B A6v D E3h S F4v P G7h");
         //for(int i = 0; i < shipLoc.length; i++) {  
