@@ -35,6 +35,8 @@ public class GameSetup {
     
     public String[] extractIndividualShip(String input) {
         String[] ships = new String[5];
+        
+        
         for(int i = 0; i < 5; i++) {
             ships[i] = input.substring(0, 5);
         

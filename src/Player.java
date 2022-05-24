@@ -49,12 +49,24 @@ public class Player {
     public void setShipLocations(){
         GameSetup setup = new GameSetup();
         System.out.println(username + ", please enter your properly formatted ship locations.");
+        
+        boolean formatted = false;
+
         Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
+
+        String input = "";
+        
+        while(!formatted){
+            input = sc.nextLine();
+            if(input.length() == 29){
+                formatted = true;
+            }
+        }
+        
 
         String[] shipStrings = setup.extractIndividualShip(input);
 
-        boolean formatted = false;
+        formatted = false;
 
         while(!formatted){
 

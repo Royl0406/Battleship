@@ -6,12 +6,26 @@ public class GameBoard {
     final int height = 1100;
     JFrame frame;
     JPanel board;
+    JButton[][] squares;
 
     public GameBoard() {
+
+        squares = new JButton[11][11];
+        for(int r = 0; r < 11; r++) {
+            for(int c = 0; c < 11; c++) {
+                squares[r][c] = new JButton();
+                squares[r][c].setBorder(BorderFactory.createLineBorder(Color.yellow));
+                squares[r][c].setBackground(Color.black);
+                squares[r][c].setOpaque(true);
+            }
+        }
+        
+    }
+
+    public void showBoard() {
         frame = new JFrame("Battleship");
         frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
 
         board = new JPanel();
         board.setLayout(new GridLayout(11, 11));
@@ -38,59 +52,107 @@ public class GameBoard {
         ImageIcon I = new ImageIcon("Star Wars images/I.png");
         ImageIcon J = new ImageIcon("Star Wars images/J.png");
 
-        //adding labels for each column (1-10)
-        for(int i = 0; i < 11; i++) {                    
-            switch(i) {
-                case 1: board.add(new JButton(zero)); break;
-                case 2: board.add(new JButton(one)); break;
-                case 3: board.add(new JButton(two)); break;
-                case 4: board.add(new JButton(three)); break;
-                case 5: board.add(new JButton(four)); break;
-                case 6: board.add(new JButton(five)); break;
-                case 7: board.add(new JButton(six)); break;
-                case 8: board.add(new JButton(sev)); break;
-                case 9:board.add(new JButton(eight)); break;
-                case 10: board.add(new JButton(nine)); break;
+        // adding labels for each column (1-10)
+        for (int i = 0; i < 11; i++) {
+            switch (i) {
+                case 1:
+                    board.add(new JButton(zero));
+                    break;
+                case 2:
+                    board.add(new JButton(one));
+                    break;
+                case 3:
+                    board.add(new JButton(two));
+                    break;
+                case 4:
+                    board.add(new JButton(three));
+                    break;
+                case 5:
+                    board.add(new JButton(four));
+                    break;
+                case 6:
+                    board.add(new JButton(five));
+                    break;
+                case 7:
+                    board.add(new JButton(six));
+                    break;
+                case 8:
+                    board.add(new JButton(sev));
+                    break;
+                case 9:
+                    board.add(new JButton(eight));
+                    break;
+                case 10:
+                    board.add(new JButton(nine));
+                    break;
 
             }
         }
-    
 
-    for(int i = 0;i < 11;i++) {
-        for (int j = 0; j < 11; j++) {
-            if(i == 0 && j == 0) {
-                JButton button = new JButton();
+        for (int i = 0; i < 11; i++) {
+            for (int j = 0; j < 11; j++) {
+                if (i == 0 && j == 0) {
+                    JButton button = new JButton();
+                    button.setBorder(BorderFactory.createLineBorder(Color.yellow));
+                    button.setBackground(Color.black);
+                    button.setOpaque(true);
+                    board.add(button);
+                    break;
+                }
+                // adding labels for each rows (A-J)
+                if (i != 0 && j == 10) {
+                    switch (i) {
+                        case 1:
+                            board.add(new JButton(A));
+                            break;
+                        case 2:
+                            board.add(new JButton(B));
+                            break;
+                        case 3:
+                            board.add(new JButton(C));
+                            break;
+                        case 4:
+                            board.add(new JButton(D));
+                            break;
+                        case 5:
+                            board.add(new JButton(E));
+                            break;
+                        case 6:
+                            board.add(new JButton(F));
+                            break;
+                        case 7:
+                            board.add(new JButton(G));
+                            break;
+                        case 8:
+                            board.add(new JButton(H));
+                            break;
+                        case 9:
+                            board.add(new JButton(I));
+                            break;
+                        case 10:
+                            board.add(new JButton(J));
+                            break;
+
+                    }
+                    break;
+                }
+                /*JButton button = new JButton();
                 button.setBorder(BorderFactory.createLineBorder(Color.yellow));
                 button.setBackground(Color.black);
-                button.setOpaque(true);
-                board.add(button);
-                break;
+                button.setOpaque(true);*/
+                board.add(squares[i][j]);
             }
-            //adding labels for each rows (A-J)
-            if(i != 0 && j == 10) {
-                switch(i) {
-                    case 1: board.add(new JButton(A)); break;
-                    case 2: board.add(new JButton(B)); break;
-                    case 3: board.add(new JButton(C)); break;
-                    case 4: board.add(new JButton(D)); break;
-                    case 5: board.add(new JButton(E)); break;
-                    case 6: board.add(new JButton(F)); break;
-                    case 7: board.add(new JButton(G)); break;
-                    case 8: board.add(new JButton(H)); break;
-                    case 9:board.add(new JButton(I)); break;
-                    case 10: board.add(new JButton(J)); break;
-    
-                }
-                break;
-            }
-            JButton button = new JButton();
-            button.setBorder(BorderFactory.createLineBorder(Color.yellow));
-            button.setBackground(Color.black);
-            button.setOpaque(true);
-            board.add(button);
-        }
 
+        }
+        frame.add(board, BorderLayout.CENTER);
+        frame.setVisible(true);
     }
-    frame.add(board,BorderLayout.CENTER);
-    frame.setVisible(true);
-}}
+
+    public void close() {
+        frame.setVisible(false);
+    }
+
+    public void updateSquare() {
+        
+    }
+}
