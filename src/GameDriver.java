@@ -6,6 +6,7 @@ public class GameDriver {
     private Player p2;
     private GameBoard p1Board;
     private GameBoard p2Board;
+    private Player winner;
     
     public GameDriver() {
         p1 = new Player(0);
@@ -69,6 +70,8 @@ public class GameDriver {
             p1.addHit(valid);
             p1.addShot();
             gameOver = p2.getBoard().gameState();
+            System.out.println("Press enter to continue");
+            input = sc.nextLine();
 
             System.out.print("\033[H\033[2J");
             System.out.flush();
@@ -87,11 +90,23 @@ public class GameDriver {
             p2.addShot();
             gameOver = p1.getBoard().gameState();
 
+            System.out.println("Press enter to continue");
+            input = sc.nextLine();
+
             System.out.print("\033[H\033[2J");
             System.out.flush();
 
 
         }
+
+        if(p2.getBoard().gameState()){
+            winner = p1;
+        }
+        else{
+            winner = p2;
+        }
+
+        System.out.println(winner.getName() + " wins! Long live the " + winner.getTeam() + "!");
         
     }
 
