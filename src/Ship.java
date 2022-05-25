@@ -12,6 +12,10 @@ public class Ship {
     private ImageIcon[] images;
     
     
+    public Ship(){
+        
+    }
+    
     public Ship(int rowNum, int colNum, int length, int type, String orient, int team){
 
         this.rowNum = rowNum;
@@ -70,8 +74,20 @@ public class Ship {
          }
     }
 
+    public int getTypeInt(){
+        return type;
+    }
+
     public ImageIcon getImage(int index){
         return images[index];
+    }
+
+    public int getRow(){
+        return rowNum;
+    }
+
+    public int getCol(){
+        return colNum;
     }
 
 

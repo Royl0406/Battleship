@@ -1,8 +1,10 @@
 public class Board{
     private char[][] boardArray;
     private int team;
+    private char currentType;
     public Board(char[][] input){
         boardArray = input;
+        currentType = 0;
     }
 
     public Board(int team){
@@ -66,6 +68,7 @@ public class Board{
 
         if (boardArray[r][c]!='1' && boardArray[r][c]!='0'){
             System.out.println("Hit!");
+            currentType = boardArray[r][c];
             boardArray[r][c] = '1';
             return 1;
         }
@@ -104,6 +107,10 @@ public class Board{
 
         return true;
 
+    }
+
+    public char getCurType (){
+        return currentType;
     }
 
     

@@ -9,6 +9,8 @@ public class Player {
     private int shotNum;
     private int hitNum;
     private ArrayList<Ship> shipList;
+    
+    
 
 
     
@@ -22,8 +24,10 @@ public class Player {
         this.team = team;
         shotNum = 0;
         hitNum = 0;
+        
         statusBoard = new Board(team);
         shipList = new ArrayList<Ship>();
+        
         
 
         
@@ -88,13 +92,14 @@ public class Player {
 
         statusBoard.setBoard(setup.getLocations());
         shipList = setup.getShipList();
+    
 
 
         
     }
 
     public void updateShips(String input){
-        int r;
+        int r = 0;
         int c = 0;
 
         c = Integer.parseInt(input.substring(1));
@@ -115,7 +120,49 @@ public class Player {
             case "J": r = 9; break;
         }
 
+        char type = statusBoard.getCurType();
+
         
+        int typeInt = 0;
+
+        switch(type){
+            case 'a': typeInt = 0; break;
+            case 'b': typeInt = 1; break;
+            case 'd': typeInt = 2; break;
+            case 's': typeInt = 3; break;
+            case 'p': typeInt = 4; break;
+
+        }
+
+        Ship current = new Ship();
+        
+        for(Ship s:shipList){
+            if(s.getTypeInt() == typeInt){
+                current = s; 
+            }
+        }
+        shipList.remove(shipList.indexOf(current));
+
+        int rowDif = r-current.getRow();
+
+        int colDif = c - current.getCol();
+
+        if(rowDif == 0){
+            
+            
+            current.shipHit(colDif);
+        }
+
+        else if(colDif == 0){
+            current.shipHit(rowDif);
+        }
+
+        shipList.add(current);
+
+        if (current.isSunk()){
+            System.out.println("You blew up the enemy " + current.getType() + "!");
+        }
+
     }
 
     public String getName(){

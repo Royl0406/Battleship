@@ -8,6 +8,7 @@ public class GameBoard {
     JPanel board;
     JButton[][] squares;
     char[][] playerBoard;
+    
 
     
     //uncomment after testing
