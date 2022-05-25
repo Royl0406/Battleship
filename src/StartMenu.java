@@ -38,14 +38,14 @@ public class StartMenu implements ActionListener{
         frame.setVisible(true );
 
         Music theme = new Music();
-        theme.PlayMusic("/Users/roy/IdeaProjects/Battleship/Star Wars Theme.mp3");
+        
 
 
     }
 
     public void actionPerformed(ActionEvent e){  
-        //frame.setVisible(false);
-        frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+        frame.setVisible(false);
+        //frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }  
 
 
