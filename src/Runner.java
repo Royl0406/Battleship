@@ -4,7 +4,7 @@ public class Runner {
         GameBoard g1 = new GameBoard();
         GameDriver driver = new GameDriver();
     
-        //g1.showBoard();
+        g1.showBoard();
         StartMenu m1 = new StartMenu();
         //driver.play();
         driver.play();

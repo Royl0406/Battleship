@@ -1,3 +1,4 @@
+import javax.sql.rowset.CachedRowSet;
 import javax.swing.*;
 import java.awt.*;
 
@@ -141,12 +142,18 @@ public class GameBoard {
                     break;
                 }
                 //identify what's in the square: TO BE COMPLETED
-                /*if(playerBoard[i-1][j] == 1) {
+                if(playerBoard[i-1][j] != 0) {
+                    switch (playerBoard[i-1][j]) {
+                        //hit target
+                        case 1:
+                            
+
+                    }
                     
                 }
                 else {
                     board.add(squares[i][j]);
-                }*/
+                }
                 
                 
             }
