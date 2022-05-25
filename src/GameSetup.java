@@ -11,12 +11,14 @@ public class GameSetup {
     private char[][] locations;
     private ArrayList<Ship> shipList;
     private ArrayList<String> typeList;
+    
 
 
     public GameSetup(){
 
         locations = new char[10][10];
         typeList = new ArrayList<String>();
+        
 
 
         shipList = new ArrayList<Ship>();
@@ -116,6 +118,7 @@ public class GameSetup {
         }
 
         col = Integer.parseInt(colStr);
+        
     
 
         int rowEnd = row;
@@ -161,8 +164,10 @@ public class GameSetup {
                         if (locations[r][c] == '0'){
                             locations[r][c] = typeChar;
                             errorMessage = "comp_code_VALID";
+                            
                             Ship s = new Ship(row, col, size, typeInt, orient, team);
                             shipList.add(s);
+                            
 
                         }
                         else{
@@ -212,5 +217,7 @@ public class GameSetup {
     public ArrayList<Ship> getShipList(){
         return shipList;
     }
+
+    
 }
 

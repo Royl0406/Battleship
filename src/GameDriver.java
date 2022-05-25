@@ -7,6 +7,8 @@ public class GameDriver {
     private GameBoard p1Board;
     private GameBoard p2Board;
     private Player winner;
+    private StartMenu start;
+    private char currentType;
     
     public GameDriver() {
         p1 = new Player(0);
@@ -14,11 +16,14 @@ public class GameDriver {
         p1Board = new GameBoard();
         p2Board = new GameBoard();
         
+        
         }
     
 
     public void play(){
 
+        start = new StartMenu();
+        
         System.out.println("Player 1: Please enter your username.");
         
         boolean validName = false;
@@ -58,13 +63,17 @@ public class GameDriver {
             
             Scanner sc = new Scanner(System.in);
             System.out.println(p1.getName()+", choose your target.");
-            String input;
+            String input = "";
             
             int valid = -1;
 
             while(valid == -1){
                 input = sc.nextLine();
                 valid = p2.getBoard().targetLocation(input);
+            }
+
+            if (valid == 1){
+                p2.updateShips(input);
             }
             
             p1.addHit(valid);
@@ -86,9 +95,15 @@ public class GameDriver {
                 valid = p1.getBoard().targetLocation(input);
             }
             
+            if (valid == 1){
+                p1.updateShips(input);
+            }
+
             p2.addHit(valid);
             p2.addShot();
-            gameOver = p1.getBoard().gameState();
+            
+            if(!gameOver){gameOver = p1.getBoard().gameState();}
+            
 
             System.out.println("Press enter to continue");
             input = sc.nextLine();

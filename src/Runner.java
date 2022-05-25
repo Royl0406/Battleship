@@ -6,6 +6,8 @@ public class Runner {
     
         g1.showBoard();
         StartMenu m1 = new StartMenu();
+        //g1.showBoard();
+        //StartMenu m1 = new StartMenu();
         //driver.play();
         driver.play();
         //String[] shipLoc = r1.extractIndividualShip("A A1v B A6v D E3h S F4v P G7h");
