@@ -13,8 +13,7 @@ public class GameDriver {
     public GameDriver() {
         p1 = new Player(0);
         p2 = new Player(1);
-        p1Board = new GameBoard();
-        p2Board = new GameBoard();
+        
         
         
         }
@@ -57,6 +56,9 @@ public class GameDriver {
 
         boolean gameOver = false;
 
+        p1Board = new GameBoard(p1.getBoard().getBoard(), p1.getShipList());
+        p2Board = new GameBoard(p2.getBoard().getBoard(), p2.getShipList());
+
         while(!gameOver){
 
             p2Board.showBoard();
@@ -82,8 +84,13 @@ public class GameDriver {
             System.out.println("Press enter to continue");
             input = sc.nextLine();
 
+            p2Board.close();
+            p2Board.updateBoard(p2.getBoard().getBoard());
+
             System.out.print("\033[H\033[2J");
             System.out.flush();
+
+            p1Board.showBoard();
 
             System.out.println(p2.getName()+", choose your target.");
             
@@ -107,6 +114,9 @@ public class GameDriver {
 
             System.out.println("Press enter to continue");
             input = sc.nextLine();
+
+            p1Board.close();
+            p1Board.updateBoard(p1.getBoard().getBoard());
 
             System.out.print("\033[H\033[2J");
             System.out.flush();

@@ -195,6 +195,10 @@ public class Player {
     public Board getBoard(){
         return statusBoard;
     }
+
+    public ArrayList<Ship> getShipList(){
+        return shipList;
+    }
 }   
 
 
