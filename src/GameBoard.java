@@ -1,6 +1,7 @@
 import javax.sql.rowset.CachedRowSet;
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
 
 public class GameBoard {
     final int width = 1100;
@@ -9,12 +10,24 @@ public class GameBoard {
     JPanel board;
     JButton[][] squares;
     char[][] playerBoard;
+    char[][] hitBoard;
+    ArrayList<Ship> shipList;
     
 
     
-    //uncomment after testing
-    public GameBoard(/*char[][] playerBoard*/) {
-        //this.playerBoard = playerBoard;
+    
+    //for playerBoard, pass in location char[][], shipList from GameSetup.java
+    public GameBoard(char[][] playerBoard, ArrayList<Ship> shipList) {
+        this.playerBoard = playerBoard;
+        this.shipList = shipList;
+
+        hitBoard = new char[10][10];
+        //make sure board is clean/unhit
+        for(int i = 0; i < 10; i++) {
+            for(int j = 0; j < 10; j++) {
+                hitBoard[i][j] = 0;
+            }
+        }
         
         squares = new JButton[11][11];
         for(int r = 0; r < 11; r++) {
@@ -142,14 +155,32 @@ public class GameBoard {
                     }
                     break;
                 }
-                //identify what's in the square: TO BE COMPLETED
-                if(playerBoard[i-1][j] != 0) {
-                    switch (playerBoard[i-1][j]) {
+                
+                if(hitBoard[i-1][j] != 0) {
+                    ImageIcon hitSquareIcon;
+                    hitSquareIcon = new ImageIcon();
+                    switch (hitBoard[i-1][j]) {
                         //hit target
                         case 1:
-                            
-
+                            String shipName = typeCharToFullType(playerBoard[i][j]);
+                            for(Ship s: shipList) {
+                                if(s.getType().equals(shipName)) {
+                                    //check if horizontal or vertical
+                                    if(s.getOrient().equals("h")) {
+                                        hitSquareIcon = s.getImage(j - s.getCol());
+                                    }
+                                    else {
+                                        hitSquareIcon = s.getImage((i - 1) - s.getRow());
+                                    }
+                                }
+                                break;
+                            }
+                            break;
+                        default:
+                            hitSquareIcon = new ImageIcon("Misc images/missedSquare.png");
                     }
+                    squares[i][j] = new JButton(hitSquareIcon);
+                    board.add(squares[i][j]);
                     
                 }
                 else {
@@ -169,6 +200,23 @@ public class GameBoard {
     }
 
     public void updateBoard(char[][] updatedBoard) {
-        playerBoard = updatedBoard;
+        hitBoard = updatedBoard;
+    }
+
+    public String typeCharToFullType(char type) {
+        switch(type) {
+            case 'a':
+                return "Aircraft Carrier";
+            case 'b':
+                return "Battleship";
+            case 'd':
+                return "Destroyer";
+            case 's':
+                return "Submarine";
+            case 'p':
+                return "Patrol Boat";
+            default: return "";
+        }
+
     }
 }
