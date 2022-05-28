@@ -8,6 +8,7 @@ public class StartMenu implements ActionListener{
         
     JFrame frame = new JFrame();
     JPanel panel = new JPanel();
+    boolean closed = false;
 
     public StartMenu() {
         
@@ -45,8 +46,13 @@ public class StartMenu implements ActionListener{
 
     public void actionPerformed(ActionEvent e){  
         frame.setVisible(false);
+        closed = true;
         //frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }  
+
+    public boolean getStatus() {
+        return closed;
+    }
 
 
 }  
