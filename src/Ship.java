@@ -90,6 +90,10 @@ public class Ship {
         return colNum;
     }
 
+    public String getOrient(){
+        return orient;
+    }
+
 
     
 }
