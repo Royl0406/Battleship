@@ -22,7 +22,7 @@ public class GameDriver {
     public void play(){
 
         start = new StartMenu();
-        
+        while(start.getStatus() == false){}
         System.out.println("Player 1: Please enter your username.");
         
         boolean validName = false;

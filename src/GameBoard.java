@@ -176,7 +176,7 @@ public class GameBoard {
                                 break;
                             }
                             break;
-                        default:
+                        case 2:
                             hitSquareIcon = new ImageIcon("Misc images/missedSquare.png");
                     }
                     squares[i][j] = new JButton(hitSquareIcon);
