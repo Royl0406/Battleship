@@ -50,7 +50,7 @@ public class StartMenu implements ActionListener{
         //frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }  
 
-    public boolean getStatus() {
+    public boolean isClosed() {
         return closed;
     }
 
