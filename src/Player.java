@@ -196,7 +196,7 @@ public class Player {
         return statusBoard;
     }
 
-    public ArrayList<Ship> getShipList(){
+    public ArrayList getShipList(){
         return shipList;
     }
 }   

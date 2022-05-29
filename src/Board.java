@@ -1,15 +1,28 @@
 public class Board{
     private char[][] boardArray;
+    private char[][] hitArray;
     private int team;
     private char currentType;
     public Board(char[][] input){
         boardArray = input;
         currentType = 0;
+        hitArray = new char[10][10];
+        for (int r = 0; r<10; r++){
+            for(int c=0; c<10; c++){
+                hitArray[r][c] = '0';
+            }
+        }
     }
 
     public Board(int team){
 
         this.team = team;
+        hitArray = new char[10][10];
+        for (int r = 0; r<10; r++){
+            for(int c=0; c<10; c++){
+                hitArray[r][c] = '0';
+            }
+        }
 
     }
 
@@ -62,7 +75,7 @@ public class Board{
 
         }
 
-    
+
     
         try {
 
@@ -70,7 +83,9 @@ public class Board{
             System.out.println("Hit!");
             currentType = boardArray[r][c];
             boardArray[r][c] = '1';
+            hitArray[r][c] = '1';
             return 1;
+            
         }
 
         else if(boardArray[r][c] == '1' || boardArray[r][c] == '2'){
@@ -80,6 +95,7 @@ public class Board{
 
         System.out.println("Miss!");
         boardArray[r][c] = '2';
+        hitArray[r][c] = '2';
 
         return 0;
         
@@ -111,6 +127,9 @@ public class Board{
 
     public char getCurType (){
         return currentType;
+    }
+    public char[][] getHits(){
+        return hitArray;
     }
 
     

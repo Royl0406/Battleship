@@ -71,6 +71,7 @@ public class GameDriver {
             System.out.println(p1.getName()+", choose your target.");
             String input = "";
             
+            
             int valid = -1;
 
             while(valid == -1){
@@ -88,13 +89,15 @@ public class GameDriver {
             System.out.println("Press enter to continue");
             input = sc.nextLine();
 
+
             p2Board.close();
-            p2Board.updateBoard(p2.getBoard().getBoard());
+            p2Board.updateBoard(p2.getBoard().getHits());
 
             System.out.print("\033[H\033[2J");
             System.out.flush();
 
             p1Board.showBoard();
+            
 
             System.out.println(p2.getName()+", choose your target.");
             
@@ -120,7 +123,7 @@ public class GameDriver {
             input = sc.nextLine();
 
             p1Board.close();
-            p1Board.updateBoard(p1.getBoard().getBoard());
+            p1Board.updateBoard(p1.getBoard().getHits());
 
             System.out.print("\033[H\033[2J");
             System.out.flush();
