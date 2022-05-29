@@ -25,7 +25,7 @@ public class GameBoard {
         //make sure board is clean/unhit
         for(int i = 0; i < 10; i++) {
             for(int j = 0; j < 10; j++) {
-                hitBoard[i][j] = 0;
+                hitBoard[i][j] = '0';
             }
         }
         
@@ -156,28 +156,33 @@ public class GameBoard {
                     break;
                 }
                 
-                if(hitBoard[i-1][j] != 0) {
+                if(hitBoard[i-1][j] != '0') {
                     ImageIcon hitSquareIcon;
                     hitSquareIcon = new ImageIcon();
                     switch (hitBoard[i-1][j]) {
                         //hit target
-                        case 1:
+                        case '1':
+                            //System.out.println(i + " " + j + " hit");
                             String shipName = typeCharToFullType(playerBoard[i][j]);
-                            for(Ship s: shipList) {
+                            for(int k = 0; k < shipList.size(); k++) {
+                                Ship s = shipList.get(k);
                                 if(s.getType().equals(shipName)) {
                                     //check if horizontal or vertical
                                     if(s.getOrient().equals("h")) {
+                                        
                                         hitSquareIcon = s.getImage(j - s.getCol());
                                     }
                                     else {
                                         hitSquareIcon = s.getImage((i - 1) - s.getRow());
+                                        
                                     }
                                 }
-                                break;
+                                
                             }
                             break;
-                        case 2:
+                        case '2':
                             hitSquareIcon = new ImageIcon("Misc images/missedSquare.png");
+                            break;
                     }
                     squares[i][j] = new JButton(hitSquareIcon);
                     board.add(squares[i][j]);
@@ -201,6 +206,7 @@ public class GameBoard {
 
     public void updateBoard(char[][] updatedBoard) {
         hitBoard = updatedBoard;
+    
     }
 
     public String typeCharToFullType(char type) {

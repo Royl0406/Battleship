@@ -13,8 +13,7 @@ public class GameDriver {
     public GameDriver() {
         p1 = new Player(0);
         p2 = new Player(1);
-        p1Board = new GameBoard();
-        p2Board = new GameBoard();
+        
         
         
         }
@@ -23,7 +22,11 @@ public class GameDriver {
     public void play(){
 
         start = new StartMenu();
-        while(start.isClosed() == false){}
+        boolean moveOn = false;
+        while(!moveOn){
+            moveOn = start.isClosed();
+            System.out.print("");
+        }
         System.out.println("Player 1: Please enter your username.");
         
         boolean validName = false;
@@ -57,6 +60,9 @@ public class GameDriver {
 
         boolean gameOver = false;
 
+        p1Board = new GameBoard(p1.getBoard().getBoard(), p1.getShipList());
+        p2Board = new GameBoard(p2.getBoard().getBoard(), p2.getShipList());
+
         while(!gameOver){
 
             p2Board.showBoard();
@@ -64,6 +70,7 @@ public class GameDriver {
             Scanner sc = new Scanner(System.in);
             System.out.println(p1.getName()+", choose your target.");
             String input = "";
+            
             
             int valid = -1;
 
@@ -82,8 +89,15 @@ public class GameDriver {
             System.out.println("Press enter to continue");
             input = sc.nextLine();
 
+
+            p2Board.close();
+            p2Board.updateBoard(p2.getBoard().getHits());
+
             System.out.print("\033[H\033[2J");
             System.out.flush();
+
+            p1Board.showBoard();
+            
 
             System.out.println(p2.getName()+", choose your target.");
             
@@ -107,6 +121,9 @@ public class GameDriver {
 
             System.out.println("Press enter to continue");
             input = sc.nextLine();
+
+            p1Board.close();
+            p1Board.updateBoard(p1.getBoard().getHits());
 
             System.out.print("\033[H\033[2J");
             System.out.flush();
