@@ -48,6 +48,10 @@ public class GameSetup {
                 input = input.substring(6);
                 input = input.trim();
             }
+
+            if (input.length()==0){
+                break;
+            }
         }
         return ships;
     }
@@ -103,7 +107,7 @@ public class GameSetup {
             case "H": row = 7; break;
             case "I": row = 8; break;
             case "J": row = 9; break;
-            default: row = 10;
+            default: return "Sorry. Your input was incorrectly formatted. Please try again.";
         }
 
         switch (type){
@@ -117,8 +121,13 @@ public class GameSetup {
 
         }
 
-        col = Integer.parseInt(colStr);
-        
+        try{
+            col = Integer.parseInt(colStr);
+        }
+
+        catch(Exception numberFormatException){
+            return "Sorry. Your locations were incorrectly formatted. Please check your input and try again.";
+        }
     
 
         int rowEnd = row;
