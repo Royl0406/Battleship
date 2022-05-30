@@ -51,7 +51,6 @@ public class StartMenu implements ActionListener{
     }  
 
     public boolean isClosed() {
-        
         return closed;
 
     }
