@@ -1,3 +1,8 @@
+/* This class stores the board of each player.
+It allows players to target locations, and updates the board accordingly.
+*/
+
+
 public class Board{
     private char[][] boardArray;
     private char[][] hitArray;
@@ -25,6 +30,7 @@ public class Board{
         }
 
     }
+    //Below are the basic getters and setters for the private variables in this class
 
     public char[][] getBoard(){
         return boardArray;
@@ -38,6 +44,9 @@ public class Board{
         return boardArray[r][c];
     }
 
+
+    //This method takes in an input and updates that location depending on whether it was a hit or a miss.
+    //It then prints whether it was a hit or miss.
 
     public int targetLocation(String input){
         
@@ -124,6 +133,8 @@ public class Board{
         return true;
 
     }
+
+    //Some more getters and setters
 
     public char getCurType (){
         return currentType;

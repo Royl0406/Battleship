@@ -1,3 +1,8 @@
+//This class stores information about a specific ship, including an Integer array that contains the status of each square,
+//an ImageIcon array that contains the images of each square, and other general information such as length, type, etc.
+
+
+
 import javax.swing.*;
 
 public class Ship {
@@ -47,6 +52,8 @@ public class Ship {
 
     }
 
+    //Returns true if the ship is sunk and false otherwise
+
     public boolean isSunk(){
         for (int i : statusArray) {
             if(i == 1){
@@ -58,11 +65,15 @@ public class Ship {
         return true;
     }
 
+    //Updates the status array to indicate that the ship has been hit
+
     public void shipHit(int index){
 
         statusArray[index] = 0;
 
     }
+
+    //Basic getters
 
     public String getType(){
         switch(type){

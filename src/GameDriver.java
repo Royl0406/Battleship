@@ -1,3 +1,5 @@
+//This class integrates the GUI classes and the backend classes to bring the game together in the play method
+
 import java.util.Scanner;
 
 public class GameDriver {
@@ -9,19 +11,23 @@ public class GameDriver {
     private Player winner;
     private StartMenu start;
     private char currentType;
+    boolean cheatCode;
     
     public GameDriver() {
         p1 = new Player(0);
         p2 = new Player(1);
+        cheatCode = false;
         
         
         
         }
     
-
+    //Runs a game
     public void play(){
 
         start = new StartMenu();
+        Scanner sc = new Scanner(System.in);
+        String input = "";
         boolean moveOn = false;
         while(!moveOn){
             moveOn = start.isClosed();
@@ -32,6 +38,11 @@ public class GameDriver {
         boolean validName = false;
         while(!validName){
             validName = p1.setUsername();
+            
+        }
+
+        if(p1.getName().equals("Hemiup")){
+            input = sc.nextLine();
         }
 
         System.out.print("\033[H\033[2J");
@@ -42,6 +53,10 @@ public class GameDriver {
         validName = false;
         while(!validName){
             validName = p2.setUsername();
+        }
+
+        if(p2.getName().equals("Hemiup")){
+            input = sc.nextLine();
         }
 
         System.out.print("\033[H\033[2J");
@@ -67,16 +82,25 @@ public class GameDriver {
 
             p2Board.showBoard();
             
-            Scanner sc = new Scanner(System.in);
+            
             System.out.println(p1.getName()+", choose your target.");
-            String input = "";
+            
             
             
             int valid = -1;
 
             while(valid == -1){
                 input = sc.nextLine();
-                valid = p2.getBoard().targetLocation(input);
+
+                if(input.equals("DhruvAndRoyRock")){
+                    gameOver = true;
+                    cheatCode = true;
+                    winner = p1;
+                    
+                }
+
+                else{valid = p2.getBoard().targetLocation(input);}
+                
             }
 
             if (valid == 1){
@@ -85,7 +109,7 @@ public class GameDriver {
             
             p1.addHit(valid);
             p1.addShot();
-            gameOver = p2.getBoard().gameState();
+            if(!cheatCode){gameOver = p2.getBoard().gameState();}
             System.out.println("Press enter to continue");
             input = sc.nextLine();
 
@@ -106,7 +130,15 @@ public class GameDriver {
 
             while(valid == -1){
                 input = sc.nextLine();
-                valid = p1.getBoard().targetLocation(input);
+
+                if(input.equals("DhruvAndRoyRock")&&(!cheatCode)){
+                    gameOver = true;
+                    cheatCode = true;
+                    winner = p2;
+                }
+
+                else{valid = p1.getBoard().targetLocation(input);}
+                
             }
             
             if (valid == 1){
@@ -131,14 +163,16 @@ public class GameDriver {
 
         }
 
-        if(p2.getBoard().gameState()){
+        if(p2.getBoard().gameState()&& (!cheatCode)){
             winner = p1;
         }
-        else{
+        else if (!cheatCode){
             winner = p2;
         }
 
         System.out.println(winner.getName() + " wins! Long live the " + winner.getTeam() + "!");
+
+        Stats endGame = new Stats(p1.getShots(), p1.getHits(), p2.getShots(), p2.getHits(), p1.getName(), p2.getName());
         
     }
 

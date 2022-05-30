@@ -1,3 +1,6 @@
+//This class contains information for a specific player. It stores an ArrayList of the player's ships,
+//a Board object for the player, the player's username, and it counts shots and hits for each player
+
 import java.util.Scanner;
 import java.util.ArrayList;
 public class Player {
@@ -34,6 +37,8 @@ public class Player {
  
     }
 
+    //Sets username based on user input
+
     public boolean setUsername (){
 
         Scanner sc = new Scanner(System.in);
@@ -46,9 +51,17 @@ public class Player {
         }
 
         username = input;
+
+        //Special surprise for anyone who inputs "Hemiup" as their username. Try entering the cheat code when targeting ships!
+        if(username.equals("Hemiup")){
+            System.out.println("The cheat code is 'DhruvAndRoyRock'. Enter it when prompted for a target. Press enter to continue.");
+        }
         return true;
 
     }
+
+    //Takes in an input and utilises the extractIndividualShip method and setLocation method from the GameSetup class
+    //to input ships onto the player's board
     
     public void setShipLocations(){
         GameSetup setup = new GameSetup();
@@ -187,6 +200,8 @@ public class Player {
         }
 
     }
+
+    //Basic getters and setters
 
     public String getName(){
         return username;
