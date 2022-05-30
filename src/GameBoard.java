@@ -1,4 +1,3 @@
-import javax.sql.rowset.CachedRowSet;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
@@ -12,6 +11,7 @@ public class GameBoard {
     char[][] playerBoard;
     char[][] hitBoard;
     ArrayList<Ship> shipList;
+    ImageIcon[][] hitSquareIcons;
     
 
     
@@ -20,6 +20,14 @@ public class GameBoard {
     public GameBoard(char[][] playerBoard, ArrayList<Ship> shipList) {
         this.playerBoard = playerBoard;
         this.shipList = shipList;
+
+        frame = new JFrame("Battleship");
+        frame.setSize(width, height);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        board = new JPanel();
+        board.setLayout(new GridLayout(11, 11));
+        hitSquareIcons = new ImageIcon[10][10];
 
         hitBoard = new char[10][10];
         //make sure board is clean/unhit
@@ -42,11 +50,9 @@ public class GameBoard {
     }
 
     public void showBoard() {
-        frame = new JFrame("Battleship");
-        frame.setSize(width, height);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        board = new JPanel();
+        board.removeAll();
+        board.repaint();
+        board.revalidate();
         board.setLayout(new GridLayout(11, 11));
 
         ImageIcon zero = new ImageIcon("Star Wars images/0.png");
@@ -157,8 +163,6 @@ public class GameBoard {
                 }
                 
                 if(hitBoard[i-1][j] != '0') {
-                    ImageIcon hitSquareIcon;
-                    hitSquareIcon = new ImageIcon();
                     switch (hitBoard[i-1][j]) {
                         //hit target
                         case '1':
@@ -170,10 +174,10 @@ public class GameBoard {
                                     //check if horizontal or vertical
                                     if(s.getOrient().equals("h")) {
                                         
-                                        hitSquareIcon = s.getImage(j - s.getCol());
+                                        hitSquareIcons[i-1][j] = s.getImage(j - s.getCol());
                                     }
                                     else {
-                                        hitSquareIcon = s.getImage((i - 1) - s.getRow());
+                                        hitSquareIcons[i-1][j] = s.getImage((i - 1) - s.getRow());
                                         
                                     }
                                 }
@@ -181,17 +185,15 @@ public class GameBoard {
                             }
                             break;
                         case '2':
-                            hitSquareIcon = new ImageIcon("Misc images/missedSquare.png");
+                            hitSquareIcons[i-1][j] = new ImageIcon("Misc images/missedSquare.png");
                             break;
                     }
-                    squares[i][j] = new JButton(hitSquareIcon);
-                    board.add(squares[i][j]);
+                    squares[i][j] = new JButton(hitSquareIcons[i-1][j]);
+                    
                     
                 }
-                else {
-                    board.add(squares[i][j]);
-                }
                 
+                board.add(squares[i][j]);
                 
             }
 
