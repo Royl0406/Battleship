@@ -65,10 +65,33 @@ public class Player {
             if(input.length() == 29){
                 formatted = true;
             }
+
+            else{
+                System.out.println("Sorry. Your input was incorrectly formatted. Please try again.");
+            }
+
+            
         }
         
-
+        
         String[] shipStrings = setup.extractIndividualShip(input);
+
+        formatted = false;
+
+        while(!formatted){
+            if(shipStrings.length == 5){
+                formatted = true;
+            }
+
+            else{
+                System.out.println("Sorry. Your input was formatted incorrectly. Please try again.");
+                input = sc.nextLine();
+                
+                shipStrings = setup.extractIndividualShip(input);
+            }
+        }
+
+        
 
         formatted = false;
 
