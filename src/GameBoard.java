@@ -166,7 +166,6 @@ public class GameBoard {
                     switch (hitBoard[i-1][j]) {
                         //hit target
                         case '1':
-                            //System.out.println(i + " " + j + " hit");
                             String shipName = typeCharToFullType(playerBoard[i][j]);
                             for(int k = 0; k < shipList.size(); k++) {
                                 Ship s = shipList.get(k);
@@ -176,8 +175,14 @@ public class GameBoard {
                                         
                                         hitSquareIcons[i-1][j] = s.getImage(j - s.getCol());
                                     }
-                                    else {
-                                        hitSquareIcons[i-1][j] = s.getImage((i - 1) - s.getRow());
+                                    else if(s.getOrient().equals("v")) {
+                                        if(i - 1 == s.getLength()) {
+                                            System.out.println("called");
+                                            hitSquareIcons[i][j] = s.getImage(s.getLength() - 1);
+                                        }
+                                        else {
+                                            hitSquareIcons[i-1][j] = s.getImage(i - 1 - s.getRow());
+                                        }
                                         
                                     }
                                 }

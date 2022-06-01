@@ -105,6 +105,10 @@ public class Ship {
         return orient;
     }
 
+    public int getLength(){
+        return length;
+    }
+
 
     
 }
