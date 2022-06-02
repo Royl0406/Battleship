@@ -1,7 +1,10 @@
 public class Runner {
     public static void main(String[] args) {
         GameDriver driver = new GameDriver();
-        driver.play();
+        //Music m = new Music();
+        //m.PlayMusic("Star Wars Theme.wav");
+        //driver.play();
+        Carrier car = new Carrier();
         
     }
     
