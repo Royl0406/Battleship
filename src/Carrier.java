@@ -12,7 +12,7 @@ public class Carrier {
 
     public Carrier() {
         squares = new JButton[5];
-        Ship aircraftCarrier = new Ship(0, 0, 5, 0, "h", 0);
+        Ship aircraftCarrier = new Ship(0, 0, 5, 1, "h", 0);
         frame = new JFrame("Battleship");
         frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,12 +21,12 @@ public class Carrier {
         board = new JPanel();
         board.setLayout(new GridLayout(1, 5));
 
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < aircraftCarrier.getLength(); i++) {
             hitSquareIcons[i] = aircraftCarrier.getImage(i);
             squares[i] = new JButton(hitSquareIcons[i]);
         }
 
-        for(int j = 0; j < 5; j++) {
+        for(int j = 0; j < aircraftCarrier.getLength(); j++) {
             board.add(squares[j]);
         }
 

@@ -26,8 +26,9 @@ public class Music {
             audioLine.open(format);
  
             audioLine.start();
+            
              
-            System.out.println("Playback started.");
+            
              
             byte[] bytesBuffer = new byte[4096];
             int bytesRead = -1;
@@ -40,7 +41,7 @@ public class Music {
             audioLine.close();
             audioStream.close();
              
-            System.out.println("Playback completed.");
+            
              
         } catch (UnsupportedAudioFileException ex) {
             System.out.println("The specified audio file is not supported.");

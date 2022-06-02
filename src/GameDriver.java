@@ -24,7 +24,7 @@ public class GameDriver {
     
     //Runs a game
     public void play(){
-
+        Music player = new Music();
         start = new StartMenu();
         Scanner sc = new Scanner(System.in);
         String input = "";
@@ -172,7 +172,21 @@ public class GameDriver {
 
         System.out.println(winner.getName() + " wins! Long live the " + winner.getTeam() + "!");
 
+        
+        
         Stats endGame = new Stats(p1.getShots(), p1.getHits(), p2.getShots(), p2.getHits(), p1.getName(), p2.getName());
+        
+        if (winner.getTeam().equals("Imperials")){
+
+            player.PlayMusic("ImperialMarch.wav");
+
+        }
+
+        else{
+            player.PlayMusic("ThroneRoom.wav");
+        }
+
+        
         
     }
 

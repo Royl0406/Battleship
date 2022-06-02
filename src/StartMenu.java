@@ -38,7 +38,8 @@ public class StartMenu implements ActionListener{
         frame.pack();
         frame.setVisible(true );
 
-        Music theme = new Music();
+        //Music theme = new Music();
+        //theme.PlayMusic("Star Wars Theme.wav");
         
 
 
