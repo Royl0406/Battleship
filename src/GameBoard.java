@@ -49,6 +49,7 @@ public class GameBoard {
         
     }
 
+    //show board with shots updated
     public void showBoard() {
         board.removeAll();
         board.repaint();
@@ -114,6 +115,7 @@ public class GameBoard {
             }
         }
 
+        //initializing all the buttons
         for (int i = 0; i < 11; i++) {
             for (int j = 0; j < 11; j++) {
                 if (i == 0 && j == 0) {
@@ -162,6 +164,7 @@ public class GameBoard {
                     break;
                 }
                 
+                //display the corresponding image when the square has been hit
                 if(hitBoard[i-1][j] != '0') {
                     switch (hitBoard[i-1][j]) {
                         //hit target
@@ -207,10 +210,12 @@ public class GameBoard {
         frame.setVisible(true);
     }
 
+    //close the GUI
     public void close() {
         frame.setVisible(false);
     }
 
+    //udd new hits to the board
     public void updateBoard(char[][] updatedBoard) {
         hitBoard = updatedBoard;
     

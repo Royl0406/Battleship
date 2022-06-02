@@ -81,7 +81,8 @@ public class Ship {
             case 1: return "Battleship"; 
             case 2: return "Destroyer"; 
             case 3: return "Submarine"; 
-            default: return "Patrol Boat";
+            case 4: return "Patrol Boat";
+            default: return "NULL";
          }
     }
 

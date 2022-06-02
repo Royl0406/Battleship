@@ -1,3 +1,4 @@
+//IGNORE THIS CLASS: used to check the images
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
@@ -12,7 +13,7 @@ public class Carrier {
 
     public Carrier() {
         squares = new JButton[5];
-        Ship aircraftCarrier = new Ship(0, 0, 5, 1, "h", 0);
+        Ship aircraftCarrier = new Ship(0, 0, 2, 4, "h", 0);
         frame = new JFrame("Battleship");
         frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
