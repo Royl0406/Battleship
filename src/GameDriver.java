@@ -44,8 +44,8 @@ public class GameDriver {
             input = sc.nextLine();
         }
 
-        //System.out.print("\033[H\033[2J");
-        //System.out.flush();
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
         
         System.out.println("Player 2: Please enter your username.");
         
@@ -58,19 +58,19 @@ public class GameDriver {
             input = sc.nextLine();
         }
 
-        //System.out.print("\033[H\033[2J");
-        //System.out.flush();
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
 
         p1.setShipLocations();
 
-        //System.out.print("\033[H\033[2J");
-        //System.out.flush();
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
 
 
         p2.setShipLocations();
 
-        //System.out.print("\033[H\033[2J");
-        //System.out.flush();
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
 
         boolean gameOver = false;
 
@@ -116,8 +116,8 @@ public class GameDriver {
             p2Board.close();
             p2Board.updateBoard(p2.getBoard().getHits());
 
-            //System.out.print("\033[H\033[2J");
-            //System.out.flush();
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
 
             p1Board.showBoard();
             
@@ -156,8 +156,8 @@ public class GameDriver {
             p1Board.close();
             p1Board.updateBoard(p1.getBoard().getHits());
 
-            //System.out.print("\033[H\033[2J");
-            //System.out.flush();
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
 
 
         }

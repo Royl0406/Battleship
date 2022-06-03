@@ -177,20 +177,11 @@ public class GameBoard {
                         //hit target
                         case '1':
                             String shipName = typeCharToFullType(playerBoard[i-1][j]);
-                            //System.out.println("playerBoard char: " + playerBoard[i][j]);
 
-                            for(int row = 0; row<10; row++){
-                                for(int col = 0; col<10; col++){
-                                    System.out.print(playerBoard[row][col] + " ");
-                                }
-                                System.out.println();
-                            }
-                            System.out.println();
 
                             for(int k = 0; k < shipList.size(); k++) {
                                 Ship s = shipList.get(k);
-                                /*System.out.println(s.getType());
-                                System.out.println("ship name: " + shipName);*/
+                               
                                 if(s.getType().equals(shipName)) {
                                     
                                     //check if horizontal or vertical
@@ -198,15 +189,12 @@ public class GameBoard {
     
 
                                         hitSquareIcons[i-1][j] = s.getImage(j - s.getCol());
-                                    }
-                                    //else if(s.getOrient().equals("v")) {
+                                    } 
                                     else {    
                                     
                                             int test = i - 1 - s.getRow();
                                             System.out.println(test);
                                             hitSquareIcons[i-1][j] = s.getImage(i - 1 - s.getRow());
-                                    
-                                        
                                     }
                                 }
                                 
