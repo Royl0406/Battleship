@@ -19,6 +19,7 @@ public class Board{
         }
     }
 
+    //initialized the hit board
     public Board(int team){
 
         this.team = team;
@@ -36,10 +37,12 @@ public class Board{
         return boardArray;
     }
 
+    //add inputs to the boardArray
     public void setBoard(char[][] input){
         boardArray = input;
     }
 
+    //retrieve type of ship stored in location r,c
     public char getType(int r, int c){
         return boardArray[r][c];
     }

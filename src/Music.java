@@ -12,6 +12,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Music {
 
+    //Plays music
     public void PlayMusic(String audioFilePath) {
         File audioFile = new File(audioFilePath);
         try {

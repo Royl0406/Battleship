@@ -17,8 +17,15 @@ public class GameBoard {
     
     
     //for playerBoard, pass in location char[][], shipList from GameSetup.java
-    public GameBoard(char[][] playerBoard, ArrayList<Ship> shipList) {
-        this.playerBoard = playerBoard;
+    public GameBoard(char[][] inputBoard, ArrayList<Ship> shipList) {
+        playerBoard = new char[10][10];
+        
+        for(int row = 0; row < 10; row++) {
+            for(int col = 0; col < 10; col++) {
+                playerBoard[row][col] = inputBoard[row][col];
+            }
+        }
+        
         this.shipList = shipList;
 
         frame = new JFrame("Battleship");
@@ -169,26 +176,40 @@ public class GameBoard {
                     switch (hitBoard[i-1][j]) {
                         //hit target
                         case '1':
-                            String shipName = typeCharToFullType(playerBoard[i][j]);
+                            String shipName = typeCharToFullType(playerBoard[i-1][j]);
+                            //System.out.println("playerBoard char: " + playerBoard[i][j]);
+
+                            for(int row = 0; row<10; row++){
+                                for(int col = 0; col<10; col++){
+                                    System.out.print(playerBoard[row][col] + " ");
+                                }
+                                System.out.println();
+                            }
+                            System.out.println();
+
                             for(int k = 0; k < shipList.size(); k++) {
                                 Ship s = shipList.get(k);
+                                /*System.out.println(s.getType());
+                                System.out.println("ship name: " + shipName);*/
                                 if(s.getType().equals(shipName)) {
+                                    
                                     //check if horizontal or vertical
                                     if(s.getOrient().equals("h")) {
-                                        
+    
+
                                         hitSquareIcons[i-1][j] = s.getImage(j - s.getCol());
                                     }
-                                    else if(s.getOrient().equals("v")) {
-                                        if(i - 1 == s.getLength()) {
-                                            System.out.println("called");
-                                            hitSquareIcons[i][j] = s.getImage(s.getLength() - 1);
-                                        }
-                                        else {
+                                    //else if(s.getOrient().equals("v")) {
+                                    else {    
+                                    
+                                            int test = i - 1 - s.getRow();
+                                            System.out.println(test);
                                             hitSquareIcons[i-1][j] = s.getImage(i - 1 - s.getRow());
-                                        }
+                                    
                                         
                                     }
                                 }
+                                
                                 
                             }
                             break;
@@ -206,6 +227,7 @@ public class GameBoard {
             }
 
         }
+        //add the entire board to the frame and display the frame
         frame.add(board, BorderLayout.CENTER);
         frame.setVisible(true);
     }
@@ -215,7 +237,7 @@ public class GameBoard {
         frame.setVisible(false);
     }
 
-    //udd new hits to the board
+    //add new hits to the board
     public void updateBoard(char[][] updatedBoard) {
         hitBoard = updatedBoard;
     
